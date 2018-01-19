@@ -12,12 +12,32 @@ import { TaskService } from '../../services/task.service';
 export class TasksComponent implements OnInit {
 
   tasks: Task[];
+  editState: boolean = false;
+  taskToEdit: Task;
+
   constructor(public taskService: TaskService) { }
 
   ngOnInit() {
     this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
-     });
+    });
+  }
+
+  deleteTask(event, task) {
+    const response = confirm('Seguro de eliminar');
+    if (response) {
+      this.taskService.deleteTask(task);
+    }
+  }
+
+  editTask(event, task){
+    console.log(this.tasks);
+    this.editState = !this.editState;
+    this.taskToEdit = task;
+  }
+  updateTask(event, task) {
+    this.editState= true;
+    this.taskService.updateTask(task);
   }
 
 }
