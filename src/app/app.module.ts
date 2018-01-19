@@ -12,6 +12,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { TaskService } from './services/task.service';
 
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { TaskService } from './services/task.service';
     AddTasksComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule, 
     AngularFireModule,
     AngularFirestoreModule,
